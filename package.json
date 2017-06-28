@@ -1,0 +1,11 @@
+{
+  "name": "lu-proxy-loader",
+  "version": "1.0.0",
+  "description": "proxy-loader for proxy file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
