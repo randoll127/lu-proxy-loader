@@ -9,16 +9,20 @@ var fileList = function(dir){
 
 
 var HEADER = "var proxy = [];\n";
-var TEMPLATE = "import Proxy_<%= index %> from './impl/<%= name %>';\n" +
+var TEMPLATE = "import Proxy_<%= index %> from './<%= name %>';\n" +
     "proxy.push(Proxy_<%= index %>);\n";
 
 module.exports = function(source, map){
     //对source进行解析
-    var filelist = fileList(this.context+"/impl");
+    console.log(this.resourcePath);
+    var filePath = this.resourcePath;
+    var filelist = fileList(this.context);
     count = filelist.length;
-    filelist.forEach(function(el,index){
+    filelist.filter(function (value) {
+        return (filePath.indexOf(value)===-1&&value.indexOf(".proxy.js")!==-1);
+    }).forEach(function (el, index) {
         var str = _.template(TEMPLATE);
-        source = str({name:el,index:index})+source;
+        source = str({name: el, index: index}) + source;
     });
     source = HEADER+source;
     console.log(source);
