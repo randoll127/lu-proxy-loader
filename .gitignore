@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+.npmignore
+package-lock.json
+package-lock.json.621433691
